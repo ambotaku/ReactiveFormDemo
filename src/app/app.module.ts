@@ -1,18 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
-import { AppComponent } from './app.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SystemGlobalSettingsComponent} from "../components/system-global-settings.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    SystemGlobalSettingsComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [SystemGlobalSettingsComponent]
 })
 export class AppModule { }
