@@ -17,11 +17,14 @@ export class SystemGlobalSettingsComponent
     changedSettings: GlobalSettings;
     updatedSettings: GlobalSettings;
     settingsGroup: FormGroup;
+    otherServerIP: string;
 
     get hostname() { return this.settingsGroup.controls['hostname']; }
     get gateway() { return this.settingsGroup.controls['gateway']; }
     get nameServer() { return this.settingsGroup.controls['nameServer']; }
     get ntpServer() { return this.settingsGroup.controls['ntpServer']; }
+
+    nameserverValidation = [Validators.required, Validators.pattern(SystemGlobalSettingsComponent.REGEX)];
 
     constructor(private systemGlobalService: SystemGlobalService, fb: FormBuilder)
     {
@@ -47,4 +50,7 @@ export class SystemGlobalSettingsComponent
       this.updatedSettings = this.changedSettings;
     }
 
+    otherServerChanged(data: string) {
+      this.otherServerIP = data;
+    }
 }

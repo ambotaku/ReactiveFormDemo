@@ -42,7 +42,7 @@
               <input type="text" class="form-control" formControlName="nameServer"
                      id="inputNameServer" placeholder="Enter Name Server">
               <span *ngIf="!nameServer.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
-              <h6 *ngIf="!nameServer.valid" class="form-text text-danger">No valid IP Address</h6>
+              <h6 *ngIf="!nameServer.valid" class="form-text text-danger">No valid Name Server IP Address</h6>
             </div>
             <div *ngIf="nameServer.dirty && nameServer.valid">
               <h5>
@@ -65,6 +65,12 @@
               </h5>
             </div>
           </div>
+
+          <validated-input [validation]="nameserverValidation" [data]="'122.33.44.66'" [label]="'some other server'"
+                           [errorMessage]="'invalid server IP address'" (changedData)="otherServerChanged($event)">
+
+          </validated-input>
+
         </form>
 
         <table>
@@ -81,6 +87,7 @@
       <div class="panel-footer">
         <p><em>Current:&nbsp;</em>{{changedSettings|json}},&nbsp;<em>Status:</em>{{settingsGroup.statusChanges|async|json}}</p>
         <p><em>Updating:&nbsp;</em>{{updatedSettings|json}}</p>
+        <p><em>Other Server:</em>{{otherServerIP}}</p>
       </div>
     </div>
   </div>
