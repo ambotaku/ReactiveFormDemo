@@ -6,71 +6,17 @@
       </div>
       <div class="panel-body">
         <form class="form-horizontal" role="form" [formGroup]="settingsGroup">
-          <div class="form-group has-feedback" [ngClass]="{'has-error':!hostname.valid}">
-            <label for="inputHostname" class="col-sm-2 control-label">Host Name</label>
-            <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="hostname"
-                     id="inputHostname" placeholder="Enter Host Name">
-              <span *ngIf="!hostname.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
-              <h6 *ngIf="!hostname.valid" class="form-text text-danger">No valid Hostname</h6>
-            </div>
-            <div *ngIf="hostname.dirty && hostname.valid">
-              <h5>
-                <span class="label label-primary">Changed.</span>
-              </h5>
-            </div>
-          </div>
+          <validated-input formControlName="hostname" [label]="'HostName'"
+                           [errorMessage]="'No valid Hostname'" [control]="hostname"></validated-input>
 
-          <div class="form-group has-feedback" [ngClass]="{'has-error':!gateway.valid}">
-            <label for="inputGateway" class="col-sm-2 control-label">Gateway</label>
-            <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="gateway"
-                     id="inputGateway" placeholder="Enter Gateway">
-              <span *ngIf="!gateway.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
-              <h6 *ngIf="!gateway.valid" class="form-text text-danger">No valid IP Address</h6>
-            </div>
-            <div *ngIf="gateway.dirty && gateway.valid">
-              <h5>
-                <span class="label label-primary">Changed.</span>
-              </h5>
-            </div>
-          </div>
+          <validated-input formControlName="gateway" [label]="'Gateway'"
+                           [errorMessage]="'No valid IP address'" [control]="gateway"></validated-input>
 
-          <div class="form-group has-feedback" [ngClass]="{'has-error':!nameServer.valid}">
-            <label for="inputNameServer" class="col-sm-2 control-label">Name Server</label>
-            <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="nameServer"
-                     id="inputNameServer" placeholder="Enter Name Server">
-              <span *ngIf="!nameServer.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
-              <h6 *ngIf="!nameServer.valid" class="form-text text-danger">No valid Name Server IP Address</h6>
-            </div>
-            <div *ngIf="nameServer.dirty && nameServer.valid">
-              <h5>
-                <span class="label label-primary">Changed.</span>
-              </h5>
-            </div>
-          </div>
+          <validated-input formControlName="nameServer" [label]="'Name Server'"
+                           [errorMessage]="'No valid IP address'" [control]="nameServer"></validated-input>
 
-          <div class="form-group has-feedback" [ngClass]="{'has-error':!ntpServer.valid}">
-            <label for="inputNTPServer" class="col-sm-2 control-label">NTP Server</label>
-            <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="ntpServer"
-                     id="inputNTPServer" placeholder="Enter NTP Server">
-              <span *ngIf="!ntpServer.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
-              <h6 *ngIf="!ntpServer.valid" class="form-text text-danger">No valid NTP Server</h6>
-            </div>
-            <div *ngIf="ntpServer.dirty && ntpServer.valid">
-              <h5>
-                <span class="label label-primary">Changed.</span>
-              </h5>
-            </div>
-          </div>
-
-          <validated-input [validation]="nameserverValidation" [data]="'122.33.44.66'" [label]="'some other server'"
-                           [errorMessage]="'invalid server IP address'" (changedData)="otherServerChanged($event)">
-
-          </validated-input>
-
+          <validated-input formControlName="ntpServer" [label]="'NTP Server'"
+                           [errorMessage]="'No valid NTP Server'" [control]="ntpServer"></validated-input>
         </form>
 
         <table>

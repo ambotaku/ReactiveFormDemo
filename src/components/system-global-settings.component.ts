@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core';
 import {GlobalSettings, SystemGlobalService} from "../app/system-global-service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
-
 @Component({
      selector: 'system-global-settings',
      templateUrl: './system-global-settings.component.html',
@@ -34,7 +33,7 @@ export class SystemGlobalSettingsComponent
           [Validators.required, Validators.pattern(SystemGlobalSettingsComponent.REGEX)]),
         nameServer: fb.control('',
           [Validators.required, Validators.pattern(SystemGlobalSettingsComponent.REGEX)]),
-        ntpServer: fb.control('', [Validators.required, Validators.minLength(1)])
+        ntpServer: fb.control('', [Validators.required, Validators.minLength(1)]),
       });
 
       this.systemGlobalService.globalSettings$.subscribe((settings => {
@@ -43,7 +42,6 @@ export class SystemGlobalSettingsComponent
 
       this.settingsGroup.valueChanges.subscribe(settings => this.changedSettings = settings);
     }
-
 
     applyClicked(event): void
     {
