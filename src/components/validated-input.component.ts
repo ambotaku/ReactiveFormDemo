@@ -11,7 +11,7 @@ import {AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular
         <span *ngIf="!control.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
         <h6 *ngIf="!control.valid" class="form-text text-danger">{{errorMessage}}</h6>
       </div>
-      <div *ngIf="control?.dirty && control?.valid">
+      <div *ngIf="control.dirty && control.valid">
         <h5>
           <span class="label label-primary">Changed.</span>
         </h5>
