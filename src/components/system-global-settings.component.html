@@ -5,18 +5,31 @@
         <h3 class="panel-title">Global Settings</h3>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" role="form" [formGroup]="settingsGroup">
-          <validated-input formControlName="hostname" [label]="'HostName'"
-                           [errorMessage]="'No valid Hostname'" [control]="hostname"></validated-input>
+        <form class="form-horizontal" role="form"
+              [formGroup]="settingsGroup">
+          <validated-input
+              formControlName="hostname"
+              [label]="'HostName'" [control]="hostname"
+              [errorMessage]="'No valid Hostname'">
+          </validated-input>
 
-          <validated-input formControlName="gateway" [label]="'Gateway'"
-                           [errorMessage]="'No valid IP address'" [control]="gateway"></validated-input>
+          <validated-input
+              formControlName="gateway" [control]="gateway"
+              [label]="'Gateway'"
+              [errorMessage]="'No valid IP address'">
+          </validated-input>
 
-          <validated-input formControlName="nameServer" [label]="'Name Server'"
-                           [errorMessage]="'No valid IP address'" [control]="nameServer"></validated-input>
+          <validated-input
+              formControlName="nameServer" [control]="nameServer"
+              [label]="'Name Server'"
+              [errorMessage]="'No valid IP address'">
+          </validated-input>
 
-          <validated-input formControlName="ntpServer" [label]="'NTP Server'"
-                           [errorMessage]="'No valid NTP Server'" [control]="ntpServer"></validated-input>
+          <validated-input
+              formControlName="ntpServer" [control]="ntpServer"
+              [label]="'NTP Server'"
+              [errorMessage]="'No valid NTP Server'">
+          </validated-input>
         </form>
 
         <table>
@@ -33,7 +46,6 @@
       <div class="panel-footer">
         <p><em>Current:&nbsp;</em>{{changedSettings|json}},&nbsp;<em>Status:</em>{{settingsGroup.statusChanges|async|json}}</p>
         <p><em>Updating:&nbsp;</em>{{updatedSettings|json}}</p>
-        <p><em>Other Server:</em>{{otherServerIP}}</p>
       </div>
     </div>
   </div>
