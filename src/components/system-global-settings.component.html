@@ -20,6 +20,12 @@
           </validated-input>
 
           <validated-input
+              formControlName="netmask" [control]="netmask"
+              [label]="'Gateway Netmask'"
+              [errorMessage]="'No valid nemask'">
+          </validated-input>
+
+          <validated-input
               formControlName="nameServer" [control]="nameServer"
               [label]="'Name Server'"
               [errorMessage]="'No valid IP address'">

@@ -9,7 +9,10 @@ import {AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular
       <div class="col-sm-3">
         <input type="text" class="form-control" [value]="inputValue" (keyup)="onInputChange($event.target.value)" id="inputField" placeholder="Enter Server IP">
         <span *ngIf="!control.valid" class="glyphicon glyphicon-remove form-control-feedback"></span>
-        <h6 *ngIf="!control.valid" class="form-text text-danger">{{errorMessage}}</h6>
+        <h6 *ngIf="netMaskValidator(control);else simpleError" class="form-text text-danger" >{{control.errors['netmaskValid']['error']}}</h6>
+        <ng-template #simpleError>
+          <h6 *ngIf="!control.valid" class="form-text text-danger">{{errorMessage}}</h6>
+        </ng-template>
       </div>
       <div *ngIf="control.dirty && control.valid">
         <h5>
@@ -33,6 +36,10 @@ export class ValidatedInputComponent implements ControlValueAccessor {
   @Input() control: AbstractControl; // the owning form control
 
   inputValue: string; // input field data
+
+  netMaskValidator(control: AbstractControl) {
+     return control.errors && 'netmaskValid' in control.errors;
+  }
 
   // fill the input with model data
   writeValue(value: string) {
